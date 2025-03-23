@@ -12,7 +12,8 @@ class PokeApiEndpoints {
   static const String contestType = '${baseUrl}contest-type/';
   static const String eggGroup = '${baseUrl}egg-group/';
   static const String encounterCondition = '${baseUrl}encounter-condition/';
-  static const String encounterConditionValue = '${baseUrl}encounter-condition-value/';
+  static const String encounterConditionValue =
+      '${baseUrl}encounter-condition-value/';
   static const String encounterMethod = '${baseUrl}encounter-method/';
   static const String evolutionChain = '${baseUrl}evolution-chain/';
   static const String evolutionTrigger = '${baseUrl}evolution-trigger/';

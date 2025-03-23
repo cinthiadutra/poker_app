@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
 class Pokemon {
@@ -539,13 +540,13 @@ class Other {
 
 class Sprites {
     final String? backDefault;
-    final dynamic backFemale;
+    final String? backFemale;
     final String? backShiny;
-    final dynamic backShinyFemale;
+    final String? backShinyFemale;
     final String? frontDefault;
-    final dynamic frontFemale;
+    final String? frontFemale;
     final String? frontShiny;
-    final dynamic frontShinyFemale;
+    final String? frontShinyFemale;
     final Other? other;
     final Versions? versions;
     final Sprites? animated;
@@ -564,32 +565,6 @@ class Sprites {
         this.animated,
     });
 
-    Sprites copyWith({
-        String? backDefault,
-        dynamic backFemale,
-        String? backShiny,
-        dynamic backShinyFemale,
-        String? frontDefault,
-        dynamic frontFemale,
-        String? frontShiny,
-        dynamic frontShinyFemale,
-        Other? other,
-        Versions? versions,
-        Sprites? animated,
-    }) => 
-        Sprites(
-            backDefault: backDefault ?? this.backDefault,
-            backFemale: backFemale ?? this.backFemale,
-            backShiny: backShiny ?? this.backShiny,
-            backShinyFemale: backShinyFemale ?? this.backShinyFemale,
-            frontDefault: frontDefault ?? this.frontDefault,
-            frontFemale: frontFemale ?? this.frontFemale,
-            frontShiny: frontShiny ?? this.frontShiny,
-            frontShinyFemale: frontShinyFemale ?? this.frontShinyFemale,
-            other: other ?? this.other,
-            versions: versions ?? this.versions,
-            animated: animated ?? this.animated,
-        );
 
     factory Sprites.fromJson(String str) => Sprites.fromMap(json.decode(str));
 
@@ -622,6 +597,34 @@ class Sprites {
         "versions": versions?.toMap(),
         "animated": animated?.toMap(),
     };
+
+  Sprites copyWith({
+    String? backDefault,
+    String? backFemale,
+    String? backShiny,
+    String? backShinyFemale,
+    String? frontDefault,
+    String? frontFemale,
+    String? frontShiny,
+    String? frontShinyFemale,
+    Other? other,
+    Versions? versions,
+    Sprites? animated,
+  }) {
+    return Sprites(
+      backDefault: backDefault ?? this.backDefault,
+      backFemale: backFemale ?? this.backFemale,
+      backShiny: backShiny ?? this.backShiny,
+      backShinyFemale: backShinyFemale ?? this.backShinyFemale,
+      frontDefault: frontDefault ?? this.frontDefault,
+      frontFemale: frontFemale ?? this.frontFemale,
+      frontShiny: frontShiny ?? this.frontShiny,
+      frontShinyFemale: frontShinyFemale ?? this.frontShinyFemale,
+      other: other ?? this.other,
+      versions: versions ?? this.versions,
+      animated: animated ?? this.animated,
+    );
+  }
 }
 
 class GenerationI {

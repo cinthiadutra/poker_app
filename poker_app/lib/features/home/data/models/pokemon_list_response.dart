@@ -1,3 +1,7 @@
+import 'dart:convert';
+
+import 'package:flutter/foundation.dart';
+
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 class PokemonListResponse {
   final int count;
@@ -35,6 +39,43 @@ class PokemonListResponse {
       results: results ?? this.results,
     );
   }
+
+  factory PokemonListResponse.fromJson(String source) =>
+      PokemonListResponse.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'count': count,
+      'next': next,
+      'previous': previous,
+      'results': results.map((x) => x.toMap()).toList(),
+    };
+  }
+
+  String toJson() => json.encode(toMap());
+
+  @override
+  String toString() {
+    return 'PokemonListResponse(count: $count, next: $next, previous: $previous, results: $results)';
+  }
+
+  @override
+  bool operator ==(covariant PokemonListResponse other) {
+    if (identical(this, other)) return true;
+
+    return other.count == count &&
+        other.next == next &&
+        other.previous == previous &&
+        listEquals(other.results, results);
+  }
+
+  @override
+  int get hashCode {
+    return count.hashCode ^
+        next.hashCode ^
+        previous.hashCode ^
+        results.hashCode;
+  }
 }
 
 class PokemonListItem {
@@ -43,8 +84,7 @@ class PokemonListItem {
 
   PokemonListItem({required this.name, required this.url});
 
-  factory PokemonListItem.fromMap(Map<String, dynamic> json) =>
-      PokemonListItem(
+  factory PokemonListItem.fromMap(Map<String, dynamic> json) => PokemonListItem(
         name: json['name'],
         url: json['url'],
       );
@@ -58,4 +98,19 @@ class PokemonListItem {
       url: url ?? this.url,
     );
   }
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'name': name,
+      'url': url,
+    };
+  }
+
+  String toJson() => json.encode(toMap());
+
+  factory PokemonListItem.fromJson(String source) =>
+      PokemonListItem.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  @override
+  String toString() => 'PokemonListItem(name: $name, url: $url)';
 }

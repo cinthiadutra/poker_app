@@ -15,60 +15,126 @@ void main() {
 
   setUp(() {
     repository = MockPokemonRepository();
-    cubit = HomeCubit();
+    cubit = HomeCubit(repository);
   });
 
-  final pokemonListResponse = PokemonListResponse(
-    count: 1,
-    results: [
-      PokemonListItem(name: 'bulbasaur', url: 'https://pokeapi.co/api/v2/pokemon/1/')
-    ],
-  );
-
-  final pokemon = Pokemon(id: 1, name: 'bulbasaur');
-
   group('HomeCubit', () {
+    final mockResponsePage1 = PokemonListResponse(
+      count: 40,
+      next: '/pokemon?limit=20&offset=20',
+      previous: null,
+      results: List.generate(
+        20,
+        (i) => PokemonListItem(name: 'poke$i', url: 'url/$i'),
+      ),
+    );
+
+    final mockResponsePage2 = PokemonListResponse(
+      count: 40,
+      next: null,
+      previous: '/pokemon?limit=20&offset=0',
+      results: List.generate(
+        20,
+        (i) => PokemonListItem(name: 'poke${i + 20}', url: 'url/${i + 20}'),
+      ),
+    );
+
+    final mockPokemon = Pokemon(name: 'Pikachu');
+
+    test('initial state is HomeInitial', () {
+      expect(cubit.state, equals(HomeInitial()));
+    });
+
     blocTest<HomeCubit, HomeState>(
-      'emits [HomeLoading, PokemonListLoaded] when fetchPokemonList is successful',
+      'emits [HomeLoading, PokemonListLoaded] on first page load',
       build: () {
-        when(() => repository.fetchPokemonList()).thenAnswer((_) async => pokemonListResponse);
+        when(() => repository.fetchPokemonList(url: any(named: 'url')))
+            .thenAnswer((_) async => mockResponsePage1);
         return cubit;
       },
       act: (cubit) => cubit.fetchPokemonList(),
-      expect: () => [HomeLoading(), PokemonListLoaded(pokemonListResponse)],
+      expect: () => [
+        isA<HomeLoading>(),
+        isA<PokemonListLoaded>()
+            .having((s) => s.pokemons.results.length, 'length', 20),
+      ],
     );
 
     blocTest<HomeCubit, HomeState>(
-      'emits [HomeLoading, HomeError] when fetchPokemonList throws exception',
+      'emits [HomeLoading, PokemonListLoaded, PokemonListLoadingMore, PokemonListLoaded] when loading next page',
       build: () {
-        when(() => repository.fetchPokemonList()).thenThrow(Exception('Failed'));
+        when(() => repository.fetchPokemonList(url: any(named: 'url')))
+            .thenAnswer((invocation) async {
+          final url = invocation.namedArguments[#url] as String?;
+
+          if (url == null || url == '/pokemon?limit=20&offset=0') {
+            return mockResponsePage1;
+          } else if (url ==
+              'https://pokeapi.co/api/v2/pokemon?offset=20&limit=20') {
+            return mockResponsePage2;
+          }
+
+          return mockResponsePage1; // fallback
+        });
+
+        return cubit;
+      },
+      act: (cubit) async {
+        cubit.fetchPokemonList(); // first page
+        cubit.fetchPokemonList(); // second page
+      },
+      expect: () => [
+        isA<HomeLoading>(),
+        isA<PokemonListLoaded>()
+            .having((s) => s.pokemons.results.length, 'length', 20),
+        isA<PokemonListLoadingMore>(),
+        isA<PokemonListLoaded>()
+            .having((s) => s.pokemons.results.length, 'length', 40),
+      ],
+    );
+
+    blocTest<HomeCubit, HomeState>(
+      'emits HomeError on fetchPokemonList exception',
+      build: () {
+        when(() => repository.fetchPokemonList(url: any(named: 'url')))
+            .thenThrow(Exception('Erro'));
         return cubit;
       },
       act: (cubit) => cubit.fetchPokemonList(),
-      expect: () => [HomeLoading(), isA<HomeError>()],
+      expect: () => [
+        isA<HomeLoading>(),
+        isA<HomeError>()
+            .having((s) => s.message, 'message', contains('Erro ao carregar')),
+      ],
     );
 
     blocTest<HomeCubit, HomeState>(
-      'emits [HomeLoading, PokemonDetailLoaded] when fetchPokemonDetail is successful',
+      'emits [HomeLoading, PokemonDetailLoaded] on fetchPokemonDetail success',
       build: () {
-        when(() => repository.getPokemonById(3)).thenAnswer((_) async => pokemon);
+        when(() => repository.getPokemonById(1))
+            .thenAnswer((_) async => mockPokemon);
         return cubit;
       },
       act: (cubit) => cubit.fetchPokemonDetail(1),
-      expect: () => [HomeLoading(), PokemonDetailLoaded(pokemon)],
+      expect: () => [
+        isA<HomeLoading>(),
+        isA<PokemonDetailLoaded>()
+            .having((s) => s.pokemon.name, 'name', 'Pikachu'),
+      ],
     );
 
-blocTest<HomeCubit, HomeState>(
-  'emits [HomeLoading, HomeError] when fetchPokemonDetail throws exception',
-  build: () {
-    when(() => repository.getPokemonById(5)).thenThrow(Exception('Erro ao buscar detalhes'));
-    return cubit;
-  },
-  act: (cubit) => cubit.fetchPokemonDetail(5),
-  expect: () => [
-    HomeLoading(),
-    isA<HomeError>(),
-  ],
-);
-
-  });}
+    blocTest<HomeCubit, HomeState>(
+      'emits HomeError on fetchPokemonDetail exception',
+      build: () {
+        when(() => repository.getPokemonById(1)).thenThrow(Exception('Erro'));
+        return cubit;
+      },
+      act: (cubit) => cubit.fetchPokemonDetail(1),
+      expect: () => [
+        isA<HomeLoading>(),
+        isA<HomeError>()
+            .having((s) => s.message, 'message', contains('Erro ao carregar')),
+      ],
+    );
+  });
+}

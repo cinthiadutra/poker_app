@@ -25,7 +25,7 @@ class HomeError extends HomeState {
 class PokemonListLoaded extends HomeState {
   final PokemonListResponse pokemons;
 
-  const PokemonListLoaded(this.pokemons);
+  const PokemonListLoaded({required this.pokemons});
 
   @override
   List<Object?> get props => [pokemons];
@@ -34,8 +34,14 @@ class PokemonListLoaded extends HomeState {
 class PokemonDetailLoaded extends HomeState {
   final Pokemon pokemon;
 
-  const PokemonDetailLoaded(this.pokemon);
+  const PokemonDetailLoaded({required this.pokemon});
 
   @override
   List<Object?> get props => [pokemon];
+}
+
+class PokemonListLoadingMore extends HomeState {
+  final PokemonListResponse pokemons;
+
+  const PokemonListLoadingMore({required this.pokemons});
 }

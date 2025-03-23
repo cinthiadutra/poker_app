@@ -17,15 +17,21 @@ void main() {
   });
 
   group('PokemonRepositoryImpl', () {
-    test('should return PokemonListResponse when fetchPokemonList is called', () async {
-      final mockResponse = PokemonListResponse(count: 1, next: null, previous: null, results: [
-        PokemonListItem(name: 'bulbasaur', url: 'https://pokeapi.co/api/v2/pokemon/1/')
-      ]);
+    test('should return PokemonListResponse when fetchPokemonList is called',
+        () async {
+      final mockResponse = PokemonListResponse(
+          count: 1,
+          next: null,
+          previous: null,
+          results: [
+            PokemonListItem(
+                name: 'bulbasaur', url: 'https://pokeapi.co/api/v2/pokemon/1/')
+          ]);
 
       when(() => mockDatasource.fetchPokemonList())
           .thenAnswer((_) async => mockResponse);
 
-      final result = await repository.fetchPokemonList(offset: 0, limit: 20);
+      final result = await repository.fetchPokemonList();
 
       expect(result, isA<PokemonListResponse>());
       expect(result.results.first.name, equals('bulbasaur'));
@@ -35,7 +41,8 @@ void main() {
     test('should return Pokemon when getPokemonById is called', () async {
       final mockPokemon = Pokemon(id: 1, name: 'bulbasaur');
 
-      when(() => mockDatasource.getPokemonById(1)).thenAnswer((_) async => mockPokemon);
+      when(() => mockDatasource.getPokemonById(1))
+          .thenAnswer((_) async => mockPokemon);
 
       final result = await repository.getPokemonById(1);
 

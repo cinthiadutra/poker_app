@@ -10,10 +10,9 @@ class PokemonRepositoryImpl extends PokemonRepository {
   PokemonRepositoryImpl({
     required this.datasource,
   });
-  @override
-  Future<PokemonListResponse> fetchPokemonList(
-      {int offset = 0, int limit = 20}) async {
-    return await datasource.fetchPokemonList();
+ @override
+  Future<PokemonListResponse> fetchPokemonList({String? url}) {
+    return datasource.fetchPokemonList(url: url);
   }
 
   @override
