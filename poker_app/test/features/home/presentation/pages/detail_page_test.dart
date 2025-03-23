@@ -1,60 +1,58 @@
-import 'package:flutter/material.dart';
+import 'dart:nativewrappers/_internal/vm/lib/ffi_allocation_patch.dart';
+
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:poker_app/features/home/data/models/pokemon_model.dart';
-import 'package:poker_app/features/home/data/repositories/pokemon_repository.dart';
 import 'package:poker_app/features/home/module/home_module.dart';
-import 'package:poker_app/features/home/presentation/cubit/detail_cubit.dart';
 import 'package:poker_app/features/home/presentation/cubit/home_state.dart';
 import 'package:poker_app/features/home/presentation/pages/detail_page.dart';
-import 'package:bloc_test/bloc_test.dart';
+import 'package:poker_app/features/home/presentation/cubit/detail_cubit.dart';
+import 'package:flutter/material.dart';
 
 class MockDetailCubit extends Mock implements DetailCubit {}
 
-class MockPokemonRepository extends Mock implements PokemonRepository {}
-
 void main() {
-  late MockPokemonRepository mockRepository;
-
-  late MockDetailCubit mockCubit;
+  late MockDetailCubit mockDetailCubit;
 
   setUp(() {
-    mockRepository = MockPokemonRepository();
-    mockCubit = MockDetailCubit();
-    Modular.replaceInstance<PokemonRepository>(mockRepository);
-     Modular.bindModule(HomeModule().binds(i
-      .bindSingleton<DetailCubit>((i) => mockCubit));
+    mockDetailCubit = MockDetailCubit();
+
+    // Reseta os binds antes de cada teste
+    Modular.bindModule(
+      HomeModule().call()..bindSingleton<DetailCubit>((i) => mockDetailCubit),
+    );
   });
 
   testWidgets('exibe detalhes quando estado é PokemonDetailLoaded',
-      (tester) async {
-    final pokemon = Pokemon(id: 1, name: 'bulbasaur');
-
-    // Configura o Cubit para emitir o estado desejado
-    when(() => mockCubit.state)
-        .thenReturn(PokemonDetailLoaded(pokemon: pokemon));
-    whenListen(
-      mockCubit,
-      Stream<HomeState>.fromIterable([
-        PokemonDetailLoaded(pokemon: pokemon),
-      ]),
+      (WidgetTester tester) async {
+    final pokemonDetail = Pokemon(
+      name: 'bulbasaur',
+      types: [Type()],
+      abilities: [Ability()],
+      height: 7,
+      weight: 69,
     );
 
-    // Renderiza a página com BlocProvider.value para injetar o mockCubit
+    when(() => mockDetailCubit.state)
+        .thenReturn(PokemonDetailLoaded(pokemon: pokemonDetail));
+    when(() => mockDetailCubit.fetchPokemonDetail(any()))
+        .thenAnswer((_) async {});
+
     await tester.pumpWidget(
       MaterialApp(
-        home: BlocProvider<DetailCubit>.value(
-          value: mockCubit,
-          child: const PokemonDetailPage(pokemonId: 1),
+        home: ModularApp(
+          module: HomeModule().call()
+            ..bindSingleton<DetailCubit>((i) => mockDetailCubit),
+          child: const PokemonDetailPage(
+            pokemonId: 1,
+          ),
         ),
       ),
     );
 
     await tester.pumpAndSettle();
 
-    // Verifica se o nome do Pokémon aparece
     expect(find.text('bulbasaur'), findsOneWidget);
   });
 }

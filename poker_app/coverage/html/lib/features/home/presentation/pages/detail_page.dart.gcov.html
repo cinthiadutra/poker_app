@@ -32,12 +32,12 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryLo">0.0&nbsp;%</td>
-            <td class="headerCovTableEntry">32</td>
+            <td class="headerCovTableEntry">31</td>
             <td class="headerCovTableEntry">0</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-03-23 04:24:27</td>
+            <td class="headerValue">2025-03-23 04:57:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -71,27 +71,27 @@
 <span id="L9"><span class="lineNum">       9</span>              : </span>
 <span id="L10"><span class="lineNum">      10</span>              : class PokemonDetailPage extends StatefulWidget {</span>
 <span id="L11"><span class="lineNum">      11</span>              :   final int pokemonId;</span>
-<span id="L12"><span class="lineNum">      12</span>              : </span>
-<span id="L13"><span class="lineNum">      13</span> <span class="tlaUNC">           0 :   const PokemonDetailPage({super.key, required this.pokemonId});</span></span>
+<span id="L12"><span class="lineNum">      12</span>              : final DetailCubit? injectedCubit;</span>
+<span id="L13"><span class="lineNum">      13</span>              : </span>
 <span id="L14"><span class="lineNum">      14</span>              : </span>
-<span id="L15"><span class="lineNum">      15</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L16"><span class="lineNum">      16</span> <span class="tlaUNC">           0 :   State&lt;PokemonDetailPage&gt; createState() =&gt; _PokemonDetailPageState();</span></span>
-<span id="L17"><span class="lineNum">      17</span>              : }</span>
-<span id="L18"><span class="lineNum">      18</span>              : </span>
-<span id="L19"><span class="lineNum">      19</span>              : class _PokemonDetailPageState extends State&lt;PokemonDetailPage&gt; {</span>
-<span id="L20"><span class="lineNum">      20</span>              :   late final DetailCubit detailCubit;</span>
-<span id="L21"><span class="lineNum">      21</span>              : </span>
-<span id="L22"><span class="lineNum">      22</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L23"><span class="lineNum">      23</span>              :   void initState() {</span>
-<span id="L24"><span class="lineNum">      24</span> <span class="tlaUNC">           0 :     super.initState();</span></span>
-<span id="L25"><span class="lineNum">      25</span> <span class="tlaUNC">           0 :     detailCubit = DetailCubit(</span></span>
-<span id="L26"><span class="lineNum">      26</span> <span class="tlaUNC">           0 :         repository: Modular.get&lt;PokemonRepository&gt;()); // injeta o repository</span></span>
-<span id="L27"><span class="lineNum">      27</span> <span class="tlaUNC">           0 :     detailCubit.fetchPokemonDetail(widget.pokemonId);</span></span>
+<span id="L15"><span class="lineNum">      15</span> <span class="tlaUNC">           0 :   const PokemonDetailPage({super.key, required this.pokemonId, this.injectedCubit});</span></span>
+<span id="L16"><span class="lineNum">      16</span>              : </span>
+<span id="L17"><span class="lineNum">      17</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L18"><span class="lineNum">      18</span> <span class="tlaUNC">           0 :   State&lt;PokemonDetailPage&gt; createState() =&gt; _PokemonDetailPageState();</span></span>
+<span id="L19"><span class="lineNum">      19</span>              : }</span>
+<span id="L20"><span class="lineNum">      20</span>              : </span>
+<span id="L21"><span class="lineNum">      21</span>              : class _PokemonDetailPageState extends State&lt;PokemonDetailPage&gt; {</span>
+<span id="L22"><span class="lineNum">      22</span>              : late final DetailCubit _cubit;</span>
+<span id="L23"><span class="lineNum">      23</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L24"><span class="lineNum">      24</span>              :   void initState() {</span>
+<span id="L25"><span class="lineNum">      25</span> <span class="tlaUNC">           0 :     super.initState();</span></span>
+<span id="L26"><span class="lineNum">      26</span> <span class="tlaUNC">           0 :      _cubit = widget.injectedCubit ?? Modular.get&lt;DetailCubit&gt;();</span></span>
+<span id="L27"><span class="lineNum">      27</span> <span class="tlaUNC">           0 :   _cubit.fetchPokemonDetail(widget.pokemonId);</span></span>
 <span id="L28"><span class="lineNum">      28</span>              :   }</span>
 <span id="L29"><span class="lineNum">      29</span>              : </span>
 <span id="L30"><span class="lineNum">      30</span> <span class="tlaUNC">           0 :   @override</span></span>
 <span id="L31"><span class="lineNum">      31</span>              :   void dispose() {</span>
-<span id="L32"><span class="lineNum">      32</span> <span class="tlaUNC">           0 :     detailCubit.close(); // evita memory leak</span></span>
+<span id="L32"><span class="lineNum">      32</span> <span class="tlaUNC">           0 :     _cubit.close(); // evita memory leak</span></span>
 <span id="L33"><span class="lineNum">      33</span> <span class="tlaUNC">           0 :     super.dispose();</span></span>
 <span id="L34"><span class="lineNum">      34</span>              :   }</span>
 <span id="L35"><span class="lineNum">      35</span>              : </span>
@@ -105,7 +105,7 @@
 <span id="L43"><span class="lineNum">      43</span> <span class="tlaUNC">           0 :               style: TextStyle(</span></span>
 <span id="L44"><span class="lineNum">      44</span> <span class="tlaUNC">           0 :                   color: AppColors.white, fontWeight: FontWeight.bold))),</span></span>
 <span id="L45"><span class="lineNum">      45</span> <span class="tlaUNC">           0 :       body: BlocConsumer&lt;DetailCubit, HomeState&gt;(</span></span>
-<span id="L46"><span class="lineNum">      46</span> <span class="tlaUNC">           0 :         bloc: detailCubit,</span></span>
+<span id="L46"><span class="lineNum">      46</span> <span class="tlaUNC">           0 :         bloc: _cubit,</span></span>
 <span id="L47"><span class="lineNum">      47</span> <span class="tlaUNC">           0 :         listener: (context, state) {</span></span>
 <span id="L48"><span class="lineNum">      48</span> <span class="tlaUNC">           0 :           if (state is HomeError) {</span></span>
 <span id="L49"><span class="lineNum">      49</span> <span class="tlaUNC">           0 :             ScaffoldMessenger.of(context).showSnackBar(</span></span>
