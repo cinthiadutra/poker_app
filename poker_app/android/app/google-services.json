@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "377331470246",
+    "project_id": "app-pokemon-aaf59",
+    "storage_bucket": "app-pokemon-aaf59.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:377331470246:android:d3fda069fc3efb2ee00967",
+        "android_client_info": {
+          "package_name": "com.example.poker_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQcUFVEM2DSoDwPlhaFN4KfQSXmM51_lY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
