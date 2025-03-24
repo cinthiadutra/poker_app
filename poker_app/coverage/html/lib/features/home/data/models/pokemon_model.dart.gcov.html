@@ -31,13 +31,13 @@
             <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryLo">26.3&nbsp;%</td>
+            <td class="headerCovTableEntryLo">28.0&nbsp;%</td>
             <td class="headerCovTableEntry">490</td>
-            <td class="headerCovTableEntry">129</td>
+            <td class="headerCovTableEntry">137</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-03-24 11:02:54</td>
+            <td class="headerValue">2025-03-24 11:41:49</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -174,9 +174,9 @@
 <span id="L112"><span class="lineNum">     112</span> <span class="tlaGNC">           4 :         pastAbilities: json[&quot;past_abilities&quot;] == null ? [] : List&lt;dynamic&gt;.from(json[&quot;past_abilities&quot;]!.map((x) =&gt; x)),</span></span>
 <span id="L113"><span class="lineNum">     113</span> <span class="tlaGNC">           4 :         pastTypes: json[&quot;past_types&quot;] == null ? [] : List&lt;dynamic&gt;.from(json[&quot;past_types&quot;]!.map((x) =&gt; x)),</span></span>
 <span id="L114"><span class="lineNum">     114</span> <span class="tlaGNC">           2 :         species: json[&quot;species&quot;] == null ? null : Species.fromMap(json[&quot;species&quot;]),</span></span>
-<span id="L115"><span class="lineNum">     115</span> <span class="tlaGNC">           4 :         sprites: json[&quot;sprites&quot;] == null ? null : Sprites.fromMap(json[&quot;sprites&quot;]),</span></span>
-<span id="L116"><span class="lineNum">     116</span> <span class="tlaGNC">           8 :         stats: json[&quot;stats&quot;] == null ? [] : List&lt;Stat&gt;.from(json[&quot;stats&quot;]!.map((x) =&gt; Stat.fromMap(x))),</span></span>
-<span id="L117"><span class="lineNum">     117</span> <span class="tlaGNC">           8 :         types: json[&quot;types&quot;] == null ? [] : List&lt;Type&gt;.from(json[&quot;types&quot;]!.map((x) =&gt; Type.fromMap(x))),</span></span>
+<span id="L115"><span class="lineNum">     115</span> <span class="tlaGNC">           6 :         sprites: json[&quot;sprites&quot;] == null ? null : Sprites.fromMap(json[&quot;sprites&quot;]),</span></span>
+<span id="L116"><span class="lineNum">     116</span> <span class="tlaGNC">          10 :         stats: json[&quot;stats&quot;] == null ? [] : List&lt;Stat&gt;.from(json[&quot;stats&quot;]!.map((x) =&gt; Stat.fromMap(x))),</span></span>
+<span id="L117"><span class="lineNum">     117</span> <span class="tlaGNC">          10 :         types: json[&quot;types&quot;] == null ? [] : List&lt;Type&gt;.from(json[&quot;types&quot;]!.map((x) =&gt; Type.fromMap(x))),</span></span>
 <span id="L118"><span class="lineNum">     118</span> <span class="tlaGNC">           2 :         weight: json[&quot;weight&quot;],</span></span>
 <span id="L119"><span class="lineNum">     119</span>              :     );</span>
 <span id="L120"><span class="lineNum">     120</span>              : </span>
@@ -561,7 +561,7 @@
 <span id="L499"><span class="lineNum">     499</span>              :     final OfficialArtwork? officialArtwork;</span>
 <span id="L500"><span class="lineNum">     500</span>              :     final Sprites? showdown;</span>
 <span id="L501"><span class="lineNum">     501</span>              : </span>
-<span id="L502"><span class="lineNum">     502</span> <span class="tlaGNC">           2 :     Other({</span></span>
+<span id="L502"><span class="lineNum">     502</span> <span class="tlaGNC">           3 :     Other({</span></span>
 <span id="L503"><span class="lineNum">     503</span>              :         this.dreamWorld,</span>
 <span id="L504"><span class="lineNum">     504</span>              :         this.home,</span>
 <span id="L505"><span class="lineNum">     505</span>              :         this.officialArtwork,</span>
@@ -585,11 +585,11 @@
 <span id="L523"><span class="lineNum">     523</span>              : </span>
 <span id="L524"><span class="lineNum">     524</span> <span class="tlaUNC">           0 :     String toJson() =&gt; json.encode(toMap());</span></span>
 <span id="L525"><span class="lineNum">     525</span>              : </span>
-<span id="L526"><span class="lineNum">     526</span> <span class="tlaGNC">           2 :     factory Other.fromMap(Map&lt;String, dynamic&gt; json) =&gt; Other(</span></span>
-<span id="L527"><span class="lineNum">     527</span> <span class="tlaGNC">           3 :         dreamWorld: json[&quot;dream_world&quot;] == null ? null : DreamWorld.fromMap(json[&quot;dream_world&quot;]),</span></span>
-<span id="L528"><span class="lineNum">     528</span> <span class="tlaGNC">           3 :         home: json[&quot;home&quot;] == null ? null : Home.fromMap(json[&quot;home&quot;]),</span></span>
-<span id="L529"><span class="lineNum">     529</span> <span class="tlaGNC">           3 :         officialArtwork: json[&quot;official-artwork&quot;] == null ? null : OfficialArtwork.fromMap(json[&quot;official-artwork&quot;]),</span></span>
-<span id="L530"><span class="lineNum">     530</span> <span class="tlaGNC">           3 :         showdown: json[&quot;showdown&quot;] == null ? null : Sprites.fromMap(json[&quot;showdown&quot;]),</span></span>
+<span id="L526"><span class="lineNum">     526</span> <span class="tlaGNC">           4 :     factory Other.fromMap(Map&lt;String, dynamic&gt; json) =&gt; Other(</span></span>
+<span id="L527"><span class="lineNum">     527</span> <span class="tlaGNC">           4 :         dreamWorld: json[&quot;dream_world&quot;] == null ? null : DreamWorld.fromMap(json[&quot;dream_world&quot;]),</span></span>
+<span id="L528"><span class="lineNum">     528</span> <span class="tlaGNC">           4 :         home: json[&quot;home&quot;] == null ? null : Home.fromMap(json[&quot;home&quot;]),</span></span>
+<span id="L529"><span class="lineNum">     529</span> <span class="tlaGNC">           6 :         officialArtwork: json[&quot;official-artwork&quot;] == null ? null : OfficialArtwork.fromMap(json[&quot;official-artwork&quot;]),</span></span>
+<span id="L530"><span class="lineNum">     530</span> <span class="tlaGNC">           4 :         showdown: json[&quot;showdown&quot;] == null ? null : Sprites.fromMap(json[&quot;showdown&quot;]),</span></span>
 <span id="L531"><span class="lineNum">     531</span>              :     );</span>
 <span id="L532"><span class="lineNum">     532</span>              : </span>
 <span id="L533"><span class="lineNum">     533</span> <span class="tlaUNC">           0 :     Map&lt;String, dynamic&gt; toMap() =&gt; {</span></span>
@@ -613,7 +613,7 @@
 <span id="L551"><span class="lineNum">     551</span>              :     final Versions? versions;</span>
 <span id="L552"><span class="lineNum">     552</span>              :     final Sprites? animated;</span>
 <span id="L553"><span class="lineNum">     553</span>              : </span>
-<span id="L554"><span class="lineNum">     554</span> <span class="tlaGNC">           2 :     Sprites({</span></span>
+<span id="L554"><span class="lineNum">     554</span> <span class="tlaGNC">           3 :     Sprites({</span></span>
 <span id="L555"><span class="lineNum">     555</span>              :         this.backDefault,</span>
 <span id="L556"><span class="lineNum">     556</span>              :         this.backFemale,</span>
 <span id="L557"><span class="lineNum">     557</span>              :         this.backShiny,</span>
@@ -632,18 +632,18 @@
 <span id="L570"><span class="lineNum">     570</span>              : </span>
 <span id="L571"><span class="lineNum">     571</span> <span class="tlaUNC">           0 :     String toJson() =&gt; json.encode(toMap());</span></span>
 <span id="L572"><span class="lineNum">     572</span>              : </span>
-<span id="L573"><span class="lineNum">     573</span> <span class="tlaGNC">           2 :     factory Sprites.fromMap(Map&lt;String, dynamic&gt; json) =&gt; Sprites(</span></span>
-<span id="L574"><span class="lineNum">     574</span> <span class="tlaGNC">           1 :         backDefault: json[&quot;back_default&quot;],</span></span>
-<span id="L575"><span class="lineNum">     575</span> <span class="tlaGNC">           1 :         backFemale: json[&quot;back_female&quot;],</span></span>
-<span id="L576"><span class="lineNum">     576</span> <span class="tlaGNC">           1 :         backShiny: json[&quot;back_shiny&quot;],</span></span>
-<span id="L577"><span class="lineNum">     577</span> <span class="tlaGNC">           1 :         backShinyFemale: json[&quot;back_shiny_female&quot;],</span></span>
-<span id="L578"><span class="lineNum">     578</span> <span class="tlaGNC">           1 :         frontDefault: json[&quot;front_default&quot;],</span></span>
-<span id="L579"><span class="lineNum">     579</span> <span class="tlaGNC">           1 :         frontFemale: json[&quot;front_female&quot;],</span></span>
-<span id="L580"><span class="lineNum">     580</span> <span class="tlaGNC">           1 :         frontShiny: json[&quot;front_shiny&quot;],</span></span>
-<span id="L581"><span class="lineNum">     581</span> <span class="tlaGNC">           1 :         frontShinyFemale: json[&quot;front_shiny_female&quot;],</span></span>
-<span id="L582"><span class="lineNum">     582</span> <span class="tlaGNC">           3 :         other: json[&quot;other&quot;] == null ? null : Other.fromMap(json[&quot;other&quot;]),</span></span>
-<span id="L583"><span class="lineNum">     583</span> <span class="tlaGNC">           3 :         versions: json[&quot;versions&quot;] == null ? null : Versions.fromMap(json[&quot;versions&quot;]),</span></span>
-<span id="L584"><span class="lineNum">     584</span> <span class="tlaGNC">           3 :         animated: json[&quot;animated&quot;] == null ? null : Sprites.fromMap(json[&quot;animated&quot;]),</span></span>
+<span id="L573"><span class="lineNum">     573</span> <span class="tlaGNC">           4 :     factory Sprites.fromMap(Map&lt;String, dynamic&gt; json) =&gt; Sprites(</span></span>
+<span id="L574"><span class="lineNum">     574</span> <span class="tlaGNC">           2 :         backDefault: json[&quot;back_default&quot;],</span></span>
+<span id="L575"><span class="lineNum">     575</span> <span class="tlaGNC">           2 :         backFemale: json[&quot;back_female&quot;],</span></span>
+<span id="L576"><span class="lineNum">     576</span> <span class="tlaGNC">           2 :         backShiny: json[&quot;back_shiny&quot;],</span></span>
+<span id="L577"><span class="lineNum">     577</span> <span class="tlaGNC">           2 :         backShinyFemale: json[&quot;back_shiny_female&quot;],</span></span>
+<span id="L578"><span class="lineNum">     578</span> <span class="tlaGNC">           2 :         frontDefault: json[&quot;front_default&quot;],</span></span>
+<span id="L579"><span class="lineNum">     579</span> <span class="tlaGNC">           2 :         frontFemale: json[&quot;front_female&quot;],</span></span>
+<span id="L580"><span class="lineNum">     580</span> <span class="tlaGNC">           2 :         frontShiny: json[&quot;front_shiny&quot;],</span></span>
+<span id="L581"><span class="lineNum">     581</span> <span class="tlaGNC">           2 :         frontShinyFemale: json[&quot;front_shiny_female&quot;],</span></span>
+<span id="L582"><span class="lineNum">     582</span> <span class="tlaGNC">           6 :         other: json[&quot;other&quot;] == null ? null : Other.fromMap(json[&quot;other&quot;]),</span></span>
+<span id="L583"><span class="lineNum">     583</span> <span class="tlaGNC">           4 :         versions: json[&quot;versions&quot;] == null ? null : Versions.fromMap(json[&quot;versions&quot;]),</span></span>
+<span id="L584"><span class="lineNum">     584</span> <span class="tlaGNC">           4 :         animated: json[&quot;animated&quot;] == null ? null : Sprites.fromMap(json[&quot;animated&quot;]),</span></span>
 <span id="L585"><span class="lineNum">     585</span>              :     );</span>
 <span id="L586"><span class="lineNum">     586</span>              : </span>
 <span id="L587"><span class="lineNum">     587</span> <span class="tlaUNC">           0 :     Map&lt;String, dynamic&gt; toMap() =&gt; {</span></span>
@@ -981,7 +981,7 @@
 <span id="L919"><span class="lineNum">     919</span>              :     final String? frontDefault;</span>
 <span id="L920"><span class="lineNum">     920</span>              :     final String? frontShiny;</span>
 <span id="L921"><span class="lineNum">     921</span>              : </span>
-<span id="L922"><span class="lineNum">     922</span> <span class="tlaGNC">           2 :     OfficialArtwork({</span></span>
+<span id="L922"><span class="lineNum">     922</span> <span class="tlaGNC">           3 :     OfficialArtwork({</span></span>
 <span id="L923"><span class="lineNum">     923</span>              :         this.frontDefault,</span>
 <span id="L924"><span class="lineNum">     924</span>              :         this.frontShiny,</span>
 <span id="L925"><span class="lineNum">     925</span>              :     });</span>
@@ -999,9 +999,9 @@
 <span id="L937"><span class="lineNum">     937</span>              : </span>
 <span id="L938"><span class="lineNum">     938</span> <span class="tlaUNC">           0 :     String toJson() =&gt; json.encode(toMap());</span></span>
 <span id="L939"><span class="lineNum">     939</span>              : </span>
-<span id="L940"><span class="lineNum">     940</span> <span class="tlaGNC">           2 :     factory OfficialArtwork.fromMap(Map&lt;String, dynamic&gt; json) =&gt; OfficialArtwork(</span></span>
-<span id="L941"><span class="lineNum">     941</span> <span class="tlaGNC">           1 :         frontDefault: json[&quot;front_default&quot;],</span></span>
-<span id="L942"><span class="lineNum">     942</span> <span class="tlaGNC">           1 :         frontShiny: json[&quot;front_shiny&quot;],</span></span>
+<span id="L940"><span class="lineNum">     940</span> <span class="tlaGNC">           4 :     factory OfficialArtwork.fromMap(Map&lt;String, dynamic&gt; json) =&gt; OfficialArtwork(</span></span>
+<span id="L941"><span class="lineNum">     941</span> <span class="tlaGNC">           2 :         frontDefault: json[&quot;front_default&quot;],</span></span>
+<span id="L942"><span class="lineNum">     942</span> <span class="tlaGNC">           2 :         frontShiny: json[&quot;front_shiny&quot;],</span></span>
 <span id="L943"><span class="lineNum">     943</span>              :     );</span>
 <span id="L944"><span class="lineNum">     944</span>              : </span>
 <span id="L945"><span class="lineNum">     945</span> <span class="tlaUNC">           0 :     Map&lt;String, dynamic&gt; toMap() =&gt; {</span></span>
@@ -1153,7 +1153,7 @@
 <span id="L1091"><span class="lineNum">    1091</span>              :     final int? effort;</span>
 <span id="L1092"><span class="lineNum">    1092</span>              :     final Species? stat;</span>
 <span id="L1093"><span class="lineNum">    1093</span>              : </span>
-<span id="L1094"><span class="lineNum">    1094</span> <span class="tlaUNC">           0 :     Stat({</span></span>
+<span id="L1094"><span class="lineNum">    1094</span> <span class="tlaGNC">           1 :     Stat({</span></span>
 <span id="L1095"><span class="lineNum">    1095</span>              :         this.baseStat,</span>
 <span id="L1096"><span class="lineNum">    1096</span>              :         this.effort,</span>
 <span id="L1097"><span class="lineNum">    1097</span>              :         this.stat,</span>
@@ -1174,10 +1174,10 @@
 <span id="L1112"><span class="lineNum">    1112</span>              : </span>
 <span id="L1113"><span class="lineNum">    1113</span> <span class="tlaUNC">           0 :     String toJson() =&gt; json.encode(toMap());</span></span>
 <span id="L1114"><span class="lineNum">    1114</span>              : </span>
-<span id="L1115"><span class="lineNum">    1115</span> <span class="tlaUNC">           0 :     factory Stat.fromMap(Map&lt;String, dynamic&gt; json) =&gt; Stat(</span></span>
-<span id="L1116"><span class="lineNum">    1116</span> <span class="tlaUNC">           0 :         baseStat: json[&quot;base_stat&quot;],</span></span>
-<span id="L1117"><span class="lineNum">    1117</span> <span class="tlaUNC">           0 :         effort: json[&quot;effort&quot;],</span></span>
-<span id="L1118"><span class="lineNum">    1118</span> <span class="tlaUNC">           0 :         stat: json[&quot;stat&quot;] == null ? null : Species.fromMap(json[&quot;stat&quot;]),</span></span>
+<span id="L1115"><span class="lineNum">    1115</span> <span class="tlaGNC">           2 :     factory Stat.fromMap(Map&lt;String, dynamic&gt; json) =&gt; Stat(</span></span>
+<span id="L1116"><span class="lineNum">    1116</span> <span class="tlaGNC">           1 :         baseStat: json[&quot;base_stat&quot;],</span></span>
+<span id="L1117"><span class="lineNum">    1117</span> <span class="tlaGNC">           1 :         effort: json[&quot;effort&quot;],</span></span>
+<span id="L1118"><span class="lineNum">    1118</span> <span class="tlaGNC">           3 :         stat: json[&quot;stat&quot;] == null ? null : Species.fromMap(json[&quot;stat&quot;]),</span></span>
 <span id="L1119"><span class="lineNum">    1119</span>              :     );</span>
 <span id="L1120"><span class="lineNum">    1120</span>              : </span>
 <span id="L1121"><span class="lineNum">    1121</span> <span class="tlaUNC">           0 :     Map&lt;String, dynamic&gt; toMap() =&gt; {</span></span>
@@ -1191,7 +1191,7 @@
 <span id="L1129"><span class="lineNum">    1129</span>              :     final int? slot;</span>
 <span id="L1130"><span class="lineNum">    1130</span>              :     final Species? type;</span>
 <span id="L1131"><span class="lineNum">    1131</span>              : </span>
-<span id="L1132"><span class="lineNum">    1132</span> <span class="tlaGNC">           1 :     Type({</span></span>
+<span id="L1132"><span class="lineNum">    1132</span> <span class="tlaGNC">           2 :     Type({</span></span>
 <span id="L1133"><span class="lineNum">    1133</span>              :         this.slot,</span>
 <span id="L1134"><span class="lineNum">    1134</span>              :         this.type,</span>
 <span id="L1135"><span class="lineNum">    1135</span>              :     });</span>
@@ -1209,9 +1209,9 @@
 <span id="L1147"><span class="lineNum">    1147</span>              : </span>
 <span id="L1148"><span class="lineNum">    1148</span> <span class="tlaUNC">           0 :     String toJson() =&gt; json.encode(toMap());</span></span>
 <span id="L1149"><span class="lineNum">    1149</span>              : </span>
-<span id="L1150"><span class="lineNum">    1150</span> <span class="tlaUNC">           0 :     factory Type.fromMap(Map&lt;String, dynamic&gt; json) =&gt; Type(</span></span>
-<span id="L1151"><span class="lineNum">    1151</span> <span class="tlaUNC">           0 :         slot: json[&quot;slot&quot;],</span></span>
-<span id="L1152"><span class="lineNum">    1152</span> <span class="tlaUNC">           0 :         type: json[&quot;type&quot;] == null ? null : Species.fromMap(json[&quot;type&quot;]),</span></span>
+<span id="L1150"><span class="lineNum">    1150</span> <span class="tlaGNC">           2 :     factory Type.fromMap(Map&lt;String, dynamic&gt; json) =&gt; Type(</span></span>
+<span id="L1151"><span class="lineNum">    1151</span> <span class="tlaGNC">           1 :         slot: json[&quot;slot&quot;],</span></span>
+<span id="L1152"><span class="lineNum">    1152</span> <span class="tlaGNC">           3 :         type: json[&quot;type&quot;] == null ? null : Species.fromMap(json[&quot;type&quot;]),</span></span>
 <span id="L1153"><span class="lineNum">    1153</span>              :     );</span>
 <span id="L1154"><span class="lineNum">    1154</span>              : </span>
 <span id="L1155"><span class="lineNum">    1155</span> <span class="tlaUNC">           0 :     Map&lt;String, dynamic&gt; toMap() =&gt; {</span></span>

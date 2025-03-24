@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-03-24 11:02:54</td>
+            <td class="headerValue">2025-03-24 11:41:49</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -69,29 +69,29 @@
 <span id="L7"><span class="lineNum">       7</span>              : class SplashPage extends StatefulWidget {</span>
 <span id="L8"><span class="lineNum">       8</span>              :   final Duration delay;</span>
 <span id="L9"><span class="lineNum">       9</span>              : </span>
-<span id="L10"><span class="lineNum">      10</span> <span class="tlaGNC">           2 :   const SplashPage({super.key, this.delay = const Duration(seconds: 3)});</span></span>
+<span id="L10"><span class="lineNum">      10</span> <span class="tlaGNC">           3 :   const SplashPage({super.key, this.delay = const Duration(seconds: 3)});</span></span>
 <span id="L11"><span class="lineNum">      11</span>              : </span>
-<span id="L12"><span class="lineNum">      12</span> <span class="tlaGNC">           1 :   @override</span></span>
-<span id="L13"><span class="lineNum">      13</span> <span class="tlaGNC">           1 :   State&lt;SplashPage&gt; createState() =&gt; _SplashPageState();</span></span>
+<span id="L12"><span class="lineNum">      12</span> <span class="tlaGNC">           2 :   @override</span></span>
+<span id="L13"><span class="lineNum">      13</span> <span class="tlaGNC">           2 :   State&lt;SplashPage&gt; createState() =&gt; _SplashPageState();</span></span>
 <span id="L14"><span class="lineNum">      14</span>              : }</span>
 <span id="L15"><span class="lineNum">      15</span>              : </span>
 <span id="L16"><span class="lineNum">      16</span>              : class _SplashPageState extends State&lt;SplashPage&gt; {</span>
-<span id="L17"><span class="lineNum">      17</span> <span class="tlaGNC">           1 :   @override</span></span>
+<span id="L17"><span class="lineNum">      17</span> <span class="tlaGNC">           2 :   @override</span></span>
 <span id="L18"><span class="lineNum">      18</span>              :   void initState() {</span>
-<span id="L19"><span class="lineNum">      19</span> <span class="tlaGNC">           1 :     super.initState();</span></span>
-<span id="L20"><span class="lineNum">      20</span> <span class="tlaGNC">           4 :     Future.delayed(widget.delay, () {</span></span>
-<span id="L21"><span class="lineNum">      21</span> <span class="tlaGNC">           1 :       if (mounted) {</span></span>
-<span id="L22"><span class="lineNum">      22</span> <span class="tlaGNC">           3 :         Modular.to.navigate(AppRoutes.homePagePath);</span></span>
+<span id="L19"><span class="lineNum">      19</span> <span class="tlaGNC">           2 :     super.initState();</span></span>
+<span id="L20"><span class="lineNum">      20</span> <span class="tlaGNC">           8 :     Future.delayed(widget.delay, () {</span></span>
+<span id="L21"><span class="lineNum">      21</span> <span class="tlaGNC">           2 :       if (mounted) {</span></span>
+<span id="L22"><span class="lineNum">      22</span> <span class="tlaGNC">           6 :         Modular.to.navigate(AppRoutes.homePagePath);</span></span>
 <span id="L23"><span class="lineNum">      23</span>              :       }</span>
 <span id="L24"><span class="lineNum">      24</span>              :     });</span>
 <span id="L25"><span class="lineNum">      25</span>              :   }</span>
 <span id="L26"><span class="lineNum">      26</span>              : </span>
-<span id="L27"><span class="lineNum">      27</span> <span class="tlaGNC">           1 :   @override</span></span>
+<span id="L27"><span class="lineNum">      27</span> <span class="tlaGNC">           2 :   @override</span></span>
 <span id="L28"><span class="lineNum">      28</span>              :   Widget build(BuildContext context) {</span>
-<span id="L29"><span class="lineNum">      29</span> <span class="tlaGNC">           1 :     return Scaffold(</span></span>
-<span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">           1 :       backgroundColor: AppColors.white,</span></span>
-<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">           1 :       body: Center(</span></span>
-<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">           1 :         child: Image.asset(logo),</span></span>
+<span id="L29"><span class="lineNum">      29</span> <span class="tlaGNC">           2 :     return Scaffold(</span></span>
+<span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">           2 :       backgroundColor: AppColors.white,</span></span>
+<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">           2 :       body: Center(</span></span>
+<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">           2 :         child: Image.asset(logo),</span></span>
 <span id="L33"><span class="lineNum">      33</span>              :       ),</span>
 <span id="L34"><span class="lineNum">      34</span>              :     );</span>
 <span id="L35"><span class="lineNum">      35</span>              :   }</span>
